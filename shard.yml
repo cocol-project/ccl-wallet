@@ -1,0 +1,20 @@
+name: ccl-wallet
+version: 0.1.0
+
+authors:
+  - Cristian Șerb <cserb@pm.me>
+
+targets:
+  ccl-wallet:
+    main: src/ccl-wallet.cr
+
+dependencies:
+  secp256k1:
+    github: q9f/secp256k1.cr
+    version: "~> 0.2"
+  commander:
+    github:  mrrooijen/commander
+
+crystal: 0.32.1
+
+license: MPL-2.0

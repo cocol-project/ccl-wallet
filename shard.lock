@@ -1,0 +1,14 @@
+version: 1.0
+shards:
+  commander:
+    github: mrrooijen/commander
+    version: 0.3.4
+
+  secp256k1:
+    github: q9f/secp256k1.cr
+    version: 0.2.2
+
+  sha3:
+    github: OscarBarrett/crystal-sha3
+    version: 0.3.2
+
