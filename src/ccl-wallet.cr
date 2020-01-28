@@ -40,9 +40,9 @@ module CCL::Wallet
         # PUT finish transaction
       end
 
-      def address() : Address
+      def address : Address
         @@address ||= Secp256k1::Ethereum.address_from_private(
-          BigInt.new(CCL::Wallet::Store.read(), 16)
+          BigInt.new(CCL::Wallet::Store.read, 16)
         )
       end
     end
@@ -54,7 +54,7 @@ module CCL::Wallet
         wallet = CCL::Wallet::Store.read
         if !wallet.empty? && !options.bool["force"]
           puts "You already have a wallet. Use the '--force' flag to replace it\n" \
-              "Wallet: #{wallet}"
+               "Wallet: #{wallet}"
           return
         end
 

@@ -5,8 +5,8 @@ eth = Secp256k1::Ethereum::Account.new
 
 # gets the private key
 priv = eth.get_secret
-privr=BigInt.new(priv, 16)
-pubr=Secp256k1::Util.public_key_from_private(privr)
+privr = BigInt.new(priv, 16)
+pubr = Secp256k1::Util.public_key_from_private(privr)
 
 # gets the ethereum addresss
 pub = Secp256k1::Ethereum.address_from_private(privr)
