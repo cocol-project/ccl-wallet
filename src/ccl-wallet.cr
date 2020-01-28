@@ -98,6 +98,7 @@ cli = Commander::Command.new do |base|
         flag.description = "The amount you want to transfer"
         flag.long = "--amount"
         flag.short = "-a"
+        flag.default = 0
       end
 
       send.flags.add do |flag|
@@ -105,6 +106,7 @@ cli = Commander::Command.new do |base|
         flag.description = "Recepient address"
         flag.long = "--recepient"
         flag.short = "-r"
+        flag.default = ""
       end
 
       send.flags.add do |flag|
@@ -112,6 +114,7 @@ cli = Commander::Command.new do |base|
         flag.description = "Node URI as 'host:port' (e.g. 127.0.0.1:3000)"
         flag.long = "--node"
         flag.short = "-n"
+        flag.default = ""
       end
 
       send.run do |options, _arguments|
