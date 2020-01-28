@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Ccl::Wallet do
+describe CCL::Wallet do
   # TODO: Write tests
 
   it "works" do
