@@ -78,10 +78,10 @@ module CCL::Wallet
     def post_transaction(node : String, txn : Transaction)
       res = HTTP::Client.post(
         "http://#{node}/transactions",
-      headers: HTTP::Headers{
-        "Content-Type" => "application/json",
-        "UserAgent"    => "CCL-Wallet",
-      },
+        headers: HTTP::Headers{
+          "Content-Type" => "application/json",
+          "UserAgent"    => "CCL-Wallet",
+        },
         body: txn.to_json
       )
 
