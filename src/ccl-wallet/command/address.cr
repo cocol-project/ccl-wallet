@@ -3,7 +3,7 @@ module CCL::Wallet::Command
     extend self
 
     def call
-      puts CCL::Wallet.address(CCL::Wallet::Store.read)
+      puts CCL::Wallet.address
     end
   end
 end

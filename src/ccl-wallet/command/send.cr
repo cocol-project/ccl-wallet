@@ -16,11 +16,9 @@ module CCL::Wallet::Command
         return
       end
 
-      priv_key = CCL::Wallet::Store.read
       recepient_address = options.string["recepient"]
       amount = options.int["amount"]
-      address = CCL::Wallet.address from: priv_key
-      pub_key = CCL::Wallet.pub_compressed from: priv_key
+      address = CCL::Wallet.address
       node = options.string["node"]
 
       unsigned_transfer = CCL::Wallet::Action::Transfer.new(
@@ -29,15 +27,7 @@ module CCL::Wallet::Command
         amount: amount.to_u64
       )
 
-      raw_signature = CCL::Wallet.sign(
-        unsigned_transfer.hash,
-        with: priv_key
-      )
-      signature = CCL::Wallet::Action::Signature.new(
-        v: pub_key,
-        r: raw_signature[:r].to_s,
-        s: raw_signature[:s].to_s
-      )
+      signature = CCL::Wallet.sign(unsigned_transfer.hash)
       unsigned_transfer.sig = signature
       signed_transfer = unsigned_transfer
 
