@@ -2,14 +2,18 @@ module CCL::Wallet::Action
   struct Signature
     include JSON::Serializable
 
+    # This is not the real recovery param (aka recid, aka v) but just the public
+    # key for now until secp256k1.cr is supporting (v,r,s). Currently only
+    # (r,s) is supported by the library
+    getter v : String
     getter r : String
     getter s : String
 
-    def initialize(@r, @s)
+    def initialize(@v, @r, @s)
     end
   end
 
-  abstract struct AbstractTransaction
+  abstract struct Abstract
     include JSON::Serializable
 
     getter hash : TxnHash
@@ -25,7 +29,7 @@ module CCL::Wallet::Action
     end
   end
 
-  struct Transfer < AbstractTransaction
+  struct Transfer < Abstract
     getter from : String
     getter to : String
 
@@ -35,7 +39,7 @@ module CCL::Wallet::Action
     end
   end
 
-  struct Stake < AbstractTransaction
+  struct Stake < Abstract
     getter staker : String
 
     def initialize(@staker, @amount)

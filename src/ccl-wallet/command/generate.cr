@@ -3,15 +3,15 @@ module CCL::Wallet::Command
     extend self
 
     def call(options)
-      wallet = CCL::Wallet::Store.read
-      if !wallet.empty? && !options.bool["force"]
+      priv_key = CCL::Wallet::Store.read
+      if !priv_key.zero? && !options.bool["force"]
         puts "You already have a wallet. Use the '--force' flag to replace it\n" \
-             "Wallet: #{wallet}"
+             "Wallet: #{priv_key}"
         return
       end
 
-      priv_key = CCL::Wallet::Store.write(CCL::Wallet.generate)
-      puts "New private key: #{priv_key}"
+      new_priv_key = CCL::Wallet::Store.write(CCL::Wallet.generate)
+      puts "New private key: #{new_priv_key}"
     end
   end
 end

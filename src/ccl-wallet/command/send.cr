@@ -16,29 +16,32 @@ module CCL::Wallet::Command
         return
       end
 
+      priv_key = CCL::Wallet::Store.read
       recepient_address = options.string["recepient"]
       amount = options.int["amount"]
-      address = CCL::Wallet.address(CCL::Wallet::Store.read)
+      address = CCL::Wallet.address from: priv_key
+      pub_key = CCL::Wallet.pub_compressed from: priv_key
       node = options.string["node"]
 
-      unsigned_txn = CCL::Wallet::Action::Transfer.new(
+      unsigned_transfer = CCL::Wallet::Action::Transfer.new(
         from: address,
         to: recepient_address,
         amount: amount.to_u64
       )
 
       raw_signature = CCL::Wallet.sign(
-        CCL::Wallet::Store.read,
-        txn_hash: unsigned_txn.hash
+        unsigned_transfer.hash,
+        with: priv_key
       )
       signature = CCL::Wallet::Action::Signature.new(
+        v: pub_key,
         r: raw_signature[:r].to_s,
         s: raw_signature[:s].to_s
       )
-      unsigned_txn.sig = signature
-      signed_txn = unsigned_txn
+      unsigned_transfer.sig = signature
+      signed_transfer = unsigned_transfer
 
-      CCL::Wallet::Client.post_transaction(node, signed_txn)
+      CCL::Wallet::Client.post(signed_transfer, to: node)
     end
   end
 end

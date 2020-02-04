@@ -2,14 +2,14 @@ module CCL::Wallet
   module Client
     extend self
 
-    def post_transaction(node : String, txn : CCL::Wallet::Action::Transfer)
+    def post(transfer : CCL::Wallet::Action::Transfer, to node : String)
       res = HTTP::Client.post(
         "http://#{node}/transactions",
         headers: HTTP::Headers{
           "Content-Type" => "application/json",
           "UserAgent"    => "CCL-Wallet",
         },
-        body: txn.to_json
+        body: transfer.to_json
       )
 
       puts "Success!" if res.success?
