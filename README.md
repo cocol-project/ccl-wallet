@@ -1,4 +1,4 @@
-# [WIP] Cocol Wallet 🌐
+# [WIP] Cocol Wallet 💰
 
 [![Build Status](https://img.shields.io/github/workflow/status/cocol-project/ccl-wallet/weekly)](https://github.com/cocol-project/ccl-wallet/actions) ![Stability Experimental](https://img.shields.io/badge/Stability-Experimental-orange.svg?style=flat-square) ![Crystal 0.32.1](https://img.shields.io/badge/Crystal-0.32.1-blue.svg?style=flat-square&link=https://crystal-lang.org&link=https://crystal-lang.org/api/0.32.1/) ![License MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-green.svg?style=flat-square)
 
