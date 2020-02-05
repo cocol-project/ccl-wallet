@@ -29,9 +29,9 @@ cli = Commander::Command.new do |wallet|
     end
 
     send.flags.add do |flag|
-      flag.name = "recepient"
-      flag.description = "Recepient address"
-      flag.long = "--recepient"
+      flag.name = "recipient"
+      flag.description = "Recipient address"
+      flag.long = "--recipient"
       flag.short = "-r"
       flag.default = ""
     end

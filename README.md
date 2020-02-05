@@ -51,7 +51,7 @@ New private key: 7e704ced1d4dc06bc2fff284d155a46886492ac158f0b4719ff7e7ca3f43a80
 > ./bin/ccl-wallet address
 0x15C91b5CBE385dd8a94643Db2021A92E0D3b6F65
 
-> ./bin/ccl-wallet send --amount 100 --recepient 0x5432FD4A91c46d3F8DAEd3cC79C8a85a77764c3a --node 127.0.0.1:3000
+> ./bin/ccl-wallet send --amount 100 --recipient 0x5432FD4A91c46d3F8DAEd3cC79C8a85a77764c3a --node 127.0.0.1:3000
 Success!
 ```
 

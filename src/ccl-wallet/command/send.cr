@@ -7,8 +7,8 @@ module CCL::Wallet::Command
         puts "You must specify an amount (e.g. --amount 1)"
         return
       end
-      if !options.string["recepient"]
-        puts "You must specify the recepient (e.g. --recepient 0xd8eCB3556006A94298f09274Af15eB29e81329D5)"
+      if !options.string["recipient"]
+        puts "You must specify the recipient (e.g. --recipient 0xd8eCB3556006A94298f09274Af15eB29e81329D5)"
         return
       end
       if !options.string["node"]
@@ -16,14 +16,14 @@ module CCL::Wallet::Command
         return
       end
 
-      recepient_address = options.string["recepient"]
+      recipient_address = options.string["recipient"]
       amount = options.int["amount"]
       address = CCL::Wallet.address
       node = options.string["node"]
 
       unsigned_transfer = CCL::Wallet::Action::Transfer.new(
         from: address,
-        to: recepient_address,
+        to: recipient_address,
         amount: amount.to_u64
       )
 
